@@ -1,0 +1,8 @@
+# ninja log v5
+7	241	7155406652489109	CMakeFiles/Calculator.dir/Digit.cpp.obj	36d59da1863444b5
+2	500	7155918515717158	CMakeFiles/Calculator.dir/main.cpp.obj	f0a3d0e7331376b9
+501	620	7155918516877140	Calculator.exe	fb09a3240461246c
+4	215	7156114823649827	build.ninja	ca031429cd3dee73
+7	242	7156114826331384	CMakeFiles/Calculator.dir/Digit.cpp.obj	36d59da1863444b5
+2	577	7156114829671175	CMakeFiles/Calculator.dir/main.cpp.obj	f0a3d0e7331376b9
+589	725	7156114831125350	Calculator.exe	fb09a3240461246c
