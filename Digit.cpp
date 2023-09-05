@@ -21,46 +21,63 @@ Digit::Digit(int max_digits) {
 Digit::Digit(const Digit &b) {
     digits = b.digits;
     p = new int[b.digits + 2]();
-    for (int i = 1; i <= digits; i ++) {
+    for (int i = 0; i <= digits; i ++) {
         p[i] = b.p[i];
     }
 }
 
-Digit::~Digit() {
-    delete p;
-}
-
-bool comparePostive(const Digit &a, const Digit &b) {
-    if (a.digits != b.digits) return a.digits > b.digits;
-    for (int i = 1; i < a.digits; i ++) {
-        if (a.p[i] != b.p[i]) return a.p[i] > b.p[i];
+void Digit::setDigits(int n) {
+    if (n < digits) {
+        puts("illegal argument!");
+        exit(1);
     }
-    return true;
+    else if (n == digits) return;
+    int *newp = new int[n + 2]();
+    for (int i = 0; i <= digits; i ++) {
+        newp[i] = p[i];
+    }
+    delete[] p;
+    p = newp;
+    digits = n;
 }
 
-Digit addPostive(const Digit &a, const Digit &b) {
+Digit::~Digit() {
+    delete[] p;
+}
+
+int comparePostive(Digit &a, Digit &b) {
+    if (a.digits != b.digits) return a.digits > b.digits ? 1 : -1;
+    for (int i = a.digits; i >= 1; i --) {
+        if (a.p[i] != b.p[i]) return a.p[i] > b.p[i] ? 1 : -1;
+    }
+    return 0;
+}
+
+Digit addPostive(Digit &a, Digit &b) {
     Digit res(max(a.digits, b.digits) + 1);
-    for (int i = 1; i <= res.digits; i ++) {
+    a.setDigits(res.digits + 1), b.setDigits(res.digits + 1);
+    for (int i = 1; i < res.digits; i ++) {
         res.p[i] += a.p[i] + b.p[i];
         res.p[i + 1] = res.p[i] / 10;
         res.p[i] = res.p[i] % 10;
     }
-    if (res.p[res.digits] == 0 && res.digits > 0) res.digits --;
+    while (res.p[res.digits] == 0 && res.digits > 1) res.digits --;
     return res;
 }
 
 void swapDigit(Digit &a, Digit &b) {
-    Digit tmp(b);
+    int *bp = b.p, bdigits = b.digits;
     b.p = a.p, b.digits = a.digits;
-    a.p = tmp.p, a.digits = tmp.digits;
+    a.p = bp, a.digits = bdigits;
 }
 
-Digit minusPostive(const Digit &a, const Digit &b) {
+Digit minusPostive(Digit &a, Digit &b) {
     Digit aa(a), bb(b);
-    if (!comparePostive(aa, bb)) {
+    if (comparePostive(aa, bb) == -1) {
         swapDigit(aa, bb);
     }
     Digit res(max(aa.digits, bb.digits));
+    aa.setDigits(res.digits), bb.setDigits(res.digits);
     for (int i = 1; i <= res.digits; i ++) {
         if (aa.p[i] < bb.p[i]) {
             aa.p[i + 1] --;
@@ -72,23 +89,41 @@ Digit minusPostive(const Digit &a, const Digit &b) {
     return res;
 }
 
-Digit operator+(const Digit& a, const Digit& b) {
-    if (a.p[0] ^ b.p[0]) {
-        Digit res = minusPostive(a, b);
+Digit operator+(Digit& a, Digit& b) {
+    if (a.p[0] == 0 && b.p[0] == 0) {
+        return addPostive(a, b);
+    }
+    else if (a.p[0] == 1 && b.p[0] == 1) {
+        Digit res = addPostive(a, b);
         res.p[0] = 1;
         return res;
     }
-    else if (a.p[0] == 0) return addPostive(a, b);
+    else if (a.p[0] == 0 && b.p[0] == 1) {
+        if (comparePostive(a, b) != -1) {
+            return minusPostive(a, b);
+        }
+        else {
+            Digit res = minusPostive(a, b);
+            res.p[0] = 1;
+            return res;
+        }
+    }
     else {
-        Digit res = addPostive(a, b);
-        res.p[0] = 1;
+        if (comparePostive(a, b) != 1) {
+            return minusPostive(a, b);
+        }
+        else {
+            Digit res = minusPostive(a, b);
+            res.p[0] = 1;
+            return res;
+        }
     }
 }
 
-Digit operator-(const Digit& a, const Digit& b) {
+Digit operator-(Digit& a, Digit& b) {
     if (a.p[0] == 0 && b.p[0] == 0) {
         Digit res = minusPostive(a, b);
-        if (comparePostive(a, b)) return res;
+        if (comparePostive(a, b) != -1) return res;
         else {
             res.p[0] = 1;
             return res;
@@ -96,32 +131,33 @@ Digit operator-(const Digit& a, const Digit& b) {
     }
     else if (a.p[0] == 1 && b.p[0] == 1) {
         Digit res = minusPostive(a, b);
-        if (comparePostive(a, b)) {
+        if (comparePostive(a, b) == 1) {
             res.p[0] = 1;
             return res;
         }
         else return res;
     }
     else if (a.p[0] == 0 && b.p[0] == 1) {
-        return minusPostive(a, b);
+        return addPostive(a, b);
     }
     else {
-        Digit res = minusPostive(a, b);
+        Digit res = addPostive(a, b);
         res.p[0] = 1;
         return res;
     }
 }
 
-Digit operator*(const Digit& a, const Digit& b) {
+Digit operator*(Digit& a, Digit& b) {
 
 }
 
-Digit operator/(const Digit& a, const Digit& b) {
+Digit operator/(Digit& a, Digit& b) {
 
 }
 
 void Digit::show() {
-    if (p[0] == 1) printf("-1");
+    printf("Here's the answer, master:\n");
+    if (p[0] == 1) printf("-");
     for (int i = digits; i >= 1; i --) {
         printf("%d", p[i]);
     }

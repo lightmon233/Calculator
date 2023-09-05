@@ -7,7 +7,7 @@ using namespace std;
 
 void repair(string &s) {
     for (int i = 0; i < s.size(); i ++) {
-        if (s[i] == '-' && (i == 0) || (s[i - 1] == '(')) {
+        if (s[i] == '-' && (i == 0 || s[i - 1] == '(')) {
             s.insert(i, 1, '0');
         }
     }
@@ -48,6 +48,7 @@ int main() {
             {'/', 2}
     };
     string s;
+    printf("Please enter the expression:\n");
     cin >> s;
     repair(s);
     int s_len = s.size();
@@ -59,6 +60,7 @@ int main() {
             i ++;
         }
         if (!tmp.empty()) {
+            cout << tmp << endl;
             i -= 1;
             num.push(Digit(tmp));
         }
