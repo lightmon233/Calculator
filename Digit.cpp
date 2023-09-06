@@ -210,11 +210,11 @@ Digit operator/(Digit& a, Digit& b) {
     }
 }
 
-void Digit::show() {
-    printf("Here's the answer, master:\n");
-    if (p[0] == 1) printf("-");
+void Digit::show(ostream& out) {
+    // printf("Here's the answer, master:\n");
+    if (p[0] == 1) out << '-';
     for (int i = digits; i >= 1; i --) {
-        printf("%d", p[i]);
+        out << p[i];
     }
-    puts("");
+    out << endl;
 }

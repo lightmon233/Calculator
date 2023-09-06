@@ -31,5 +31,5 @@ public:
     friend Digit operator*(Digit& a, Digit& b);
     friend Digit operator/(Digit& a, Digit& b);
     Digit& operator=(const Digit& b);
-    void show();
+    void show(ostream& out);
 };

@@ -2,6 +2,7 @@
 #include <stack>
 #include <unordered_map>
 #include "Digit.h"
+#include <fstream>
 
 using namespace std;
 
@@ -47,9 +48,21 @@ int main() {
             {'*', 2},
             {'/', 2}
     };
+    ifstream ifs;
+    ifs.open("../input.txt", ios::in);
+    if (!ifs.is_open()) {
+        cout << "failed to open input.txt." << endl;
+        exit(1);
+    }
+    ofstream ofs;
+    ofs.open("../output.txt", ios::out);
+    if (!ofs.is_open()) {
+        cout << "failed to open output.txt" << endl;
+        exit(1);
+    }
     string s;
-    printf("Please enter the expression:\n");
-    cin >> s;
+    // printf("Please enter the expression:\n");
+    ifs >> s;
     repair(s);
     int s_len = s.size();
     int i = 0;
@@ -79,6 +92,9 @@ int main() {
         i ++;
     }
     while (!op.empty()) eval(num, op);
-    num.top().show();
+    num.top().show(ofs);
+    ifs.close();
+    ofs.close();
+    cout << "Answer successfully generated." << endl;
     return 0;
 }
