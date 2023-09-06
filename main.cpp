@@ -39,30 +39,7 @@ void eval(stack<Digit> &num, stack<char> &op) {
     }
 }
 
-int main() {
-    stack<Digit> num;
-    stack<char> op;
-    unordered_map<char, int> priority {
-            {'+', 1},
-            {'-', 1},
-            {'*', 2},
-            {'/', 2}
-    };
-    ifstream ifs;
-    ifs.open("../input.txt", ios::in);
-    if (!ifs.is_open()) {
-        cout << "failed to open input.txt." << endl;
-        exit(1);
-    }
-    ofstream ofs;
-    ofs.open("../output.txt", ios::out);
-    if (!ofs.is_open()) {
-        cout << "failed to open output.txt" << endl;
-        exit(1);
-    }
-    string s;
-    // printf("Please enter the expression:\n");
-    ifs >> s;
+void calculate(string &s, ifstream &ifs, ofstream &ofs, stack<Digit> &num, stack<char> &op, unordered_map<char, int> &priority) {
     repair(s);
     int s_len = s.size();
     int i = 0;
@@ -93,6 +70,33 @@ int main() {
     }
     while (!op.empty()) eval(num, op);
     num.top().show(ofs);
+}
+
+int main() {
+    stack<Digit> num;
+    stack<char> op;
+    unordered_map<char, int> priority {
+            {'+', 1},
+            {'-', 1},
+            {'*', 2},
+            {'/', 2}
+    };
+    ifstream ifs;
+    ifs.open("../input.txt", ios::in);
+    if (!ifs.is_open()) {
+        cout << "failed to open input.txt." << endl;
+        exit(1);
+    }
+    ofstream ofs;
+    ofs.open("../output.txt", ios::out);
+    if (!ofs.is_open()) {
+        cout << "failed to open output.txt" << endl;
+        exit(1);
+    }
+    string s;
+    while (ifs >> s) {
+        calculate(s, ifs, ofs, num, op, priority);
+    }
     ifs.close();
     ofs.close();
     cout << "Answer successfully generated." << endl;
