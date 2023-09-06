@@ -2,6 +2,7 @@
 // Created by 35358 on 2023/9/5.
 //
 #include "Digit.h"
+#include <iostream>
 
 using namespace std;
 
@@ -28,8 +29,10 @@ Digit::Digit(const Digit &b) {
 
 void Digit::setDigits(int n) {
     if (n < digits) {
-        puts("illegal argument!");
-        exit(1);
+        int *newp = new int[n + 2]();
+        delete[] p;
+        p = newp;
+        digits = n;
     }
     else if (n == digits) return;
     int *newp = new int[n + 2]();
@@ -182,13 +185,13 @@ Digit operator*(Digit& a, Digit& b) {
 }
 
 Digit operator/(Digit& a, Digit& b) {
-    if (a.digits - b.digits + 1 <= 0) {
+    if (b.p[b.digits] == 0) {
+        puts("illegal arguments at the call of function 'operator/'!");
+        exit(1);
+    }
+    else if (a.digits - b.digits + 1 <= 0) {
         Digit res("0");
         return res;
-    }
-    else if (b.p[b.digits] == 0) {
-        puts("illegal arguments!");
-        exit(1);
     }
     else {
         Digit res(a.digits - b.digits + 1);
