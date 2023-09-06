@@ -20,6 +20,7 @@ public:
     Digit(const Digit& b);
     explicit Digit(int max_digits);
     void setDigits(int n);
+    void leftShift(int n);
     ~Digit();
     friend void swapDigit(Digit &a, Digit& b);
     friend int comparePostive(Digit& a, Digit& b);
@@ -29,5 +30,6 @@ public:
     friend Digit operator-(Digit& a, Digit& b);
     friend Digit operator*(Digit& a, Digit& b);
     friend Digit operator/(Digit& a, Digit& b);
+    Digit& operator=(const Digit& b);
     void show();
 };
