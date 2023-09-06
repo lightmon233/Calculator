@@ -21,7 +21,7 @@ Digit::Digit(int max_digits) {
 
 Digit::Digit(const Digit &b) {
     digits = b.digits;
-    p = new int[b.digits + 2]();
+    p = new int[digits + 2]();
     for (int i = 0; i <= digits; i ++) {
         p[i] = b.p[i];
     }
@@ -195,12 +195,13 @@ Digit operator/(Digit& a, Digit& b) {
     }
     else {
         Digit res(a.digits - b.digits + 1);
+        Digit aa(a);
         for (int i = res.digits; i >= 1; i --) {
             Digit tmp(b);
             tmp.leftShift(i - 1);
-            while (comparePostive(a, tmp) >= 0) {
+            while (comparePostive(aa, tmp) >= 0) {
                 res.p[i] ++;
-                a = minusPostive(a, tmp);
+                aa = minusPostive(aa, tmp);
             }
         }
         while (res.p[res.digits] == 0 && res.digits > 1) res.digits --;
