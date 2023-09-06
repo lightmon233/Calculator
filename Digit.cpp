@@ -148,7 +148,17 @@ Digit operator-(Digit& a, Digit& b) {
 }
 
 Digit operator*(Digit& a, Digit& b) {
-
+    Digit res(a.digits + b.digits);
+    for (int i = 1; i <= a.digits; i ++) {
+        for (int j = 1; j <= b.digits; j ++) {
+            res.p[i + j - 1] += a.p[i] * b.p[j];
+            res.p[i + j] += res.p[i + j - 1] / 10;
+            res.p[i + j - 1] %= 10;
+        }
+    }
+    while (res.p[res.digits] == 0 && res.digits > 1) res.digits --;
+    if (a.p[0] ^ b.p[0]) res.p[0] = 1;
+    return res;
 }
 
 Digit operator/(Digit& a, Digit& b) {

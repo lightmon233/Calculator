@@ -60,7 +60,7 @@ int main() {
             i ++;
         }
         if (!tmp.empty()) {
-            cout << tmp << endl;
+            // cout << tmp << endl;
             i -= 1;
             num.push(Digit(tmp));
         }
