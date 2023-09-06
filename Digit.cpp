@@ -41,6 +41,26 @@ void Digit::setDigits(int n) {
     digits = n;
 }
 
+void Digit::leftShift(int n) {
+    int pre_digits = digits;
+    setDigits(pre_digits + n);
+    for (int i = pre_digits; i >= 1; i --) {
+        p[i + n] = p[i];
+    }
+    for (int i = 1; i <= n; i ++) p[i] = 0;
+}
+
+Digit& Digit::operator=(const Digit &b) {
+    if (this == &b) return *this;
+    else {
+        setDigits(b.digits);
+        for (int i = 0; i <= b.digits; i ++) {
+            p[i] = b.p[i];
+        }
+        return *this;
+    }
+}
+
 Digit::~Digit() {
     delete[] p;
 }
@@ -162,7 +182,28 @@ Digit operator*(Digit& a, Digit& b) {
 }
 
 Digit operator/(Digit& a, Digit& b) {
-
+    if (a.digits - b.digits + 1 <= 0) {
+        Digit res("0");
+        return res;
+    }
+    else if (b.p[b.digits] == 0) {
+        puts("illegal arguments!");
+        exit(1);
+    }
+    else {
+        Digit res(a.digits - b.digits + 1);
+        for (int i = res.digits; i >= 1; i --) {
+            Digit tmp(b);
+            tmp.leftShift(i - 1);
+            while (comparePostive(a, tmp) >= 0) {
+                res.p[i] ++;
+                a = minusPostive(a, tmp);
+            }
+        }
+        while (res.p[res.digits] == 0 && res.digits > 1) res.digits --;
+        if (a.p[0] ^ b.p[0]) res.p[0] = 1;
+        return res;
+    }
 }
 
 void Digit::show() {
