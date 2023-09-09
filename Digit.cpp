@@ -57,7 +57,7 @@ Digit& Digit::operator=(const Digit &b) {
     if (this == &b) return *this;
     else {
         setDigits(b.digits);
-        for (int i = 0; i <= b.digits; i ++) {
+        for (int i = 0; i <= b.digits; i++) {
             p[i] = b.p[i];
         }
         return *this;
@@ -68,10 +68,10 @@ Digit::~Digit() {
     delete[] p;
 }
 
-int comparePostive(Digit &a, Digit &b) {
-    if (a.digits != b.digits) return a.digits > b.digits ? 1 : -1;
-    for (int i = a.digits; i >= 1; i --) {
-        if (a.p[i] != b.p[i]) return a.p[i] > b.p[i] ? 1 : -1;
+int Digit::comparePostive(Digit &b) {
+    if (digits != b.digits) return digits > b.digits ? 1 : -1;
+    for (int i = digits; i >= 1; i --) {
+        if (p[i] != b.p[i]) return p[i] > b.p[i] ? 1 : -1;
     }
     return 0;
 }
@@ -96,7 +96,7 @@ void swapDigit(Digit &a, Digit &b) {
 
 Digit minusPostive(Digit &a, Digit &b) {
     Digit aa(a), bb(b);
-    if (comparePostive(aa, bb) == -1) {
+    if (aa.comparePostive(bb) == -1) {
         swapDigit(aa, bb);
     }
     Digit res(max(aa.digits, bb.digits));
@@ -122,7 +122,7 @@ Digit operator+(Digit& a, Digit& b) {
         return res;
     }
     else if (a.p[0] == 0 && b.p[0] == 1) {
-        if (comparePostive(a, b) != -1) {
+        if (a.comparePostive(b) != -1) {
             return minusPostive(a, b);
         }
         else {
@@ -132,7 +132,7 @@ Digit operator+(Digit& a, Digit& b) {
         }
     }
     else {
-        if (comparePostive(a, b) != 1) {
+        if (a.comparePostive(b) != 1) {
             return minusPostive(a, b);
         }
         else {
@@ -146,7 +146,7 @@ Digit operator+(Digit& a, Digit& b) {
 Digit operator-(Digit& a, Digit& b) {
     if (a.p[0] == 0 && b.p[0] == 0) {
         Digit res = minusPostive(a, b);
-        if (comparePostive(a, b) != -1) return res;
+        if (a.comparePostive(b) != -1) return res;
         else {
             res.p[0] = 1;
             return res;
@@ -154,7 +154,7 @@ Digit operator-(Digit& a, Digit& b) {
     }
     else if (a.p[0] == 1 && b.p[0] == 1) {
         Digit res = minusPostive(a, b);
-        if (comparePostive(a, b) == 1) {
+        if (a.comparePostive(b) == 1) {
             res.p[0] = 1;
             return res;
         }
@@ -199,7 +199,7 @@ Digit operator/(Digit& a, Digit& b) {
         for (int i = res.digits; i >= 1; i --) {
             Digit tmp(b);
             tmp.leftShift(i - 1);
-            while (comparePostive(aa, tmp) >= 0) {
+            while (a.comparePostive(tmp) >= 0) {
                 res.p[i] ++;
                 aa = minusPostive(aa, tmp);
             }

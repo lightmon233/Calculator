@@ -23,7 +23,7 @@ public:
     void leftShift(int n);
     ~Digit();
     friend void swapDigit(Digit &a, Digit& b);
-    friend int comparePostive(Digit& a, Digit& b);
+    int comparePostive(Digit& b);
     friend Digit addPostive(Digit& a, Digit& b);
     friend Digit minusPostive(Digit& a, Digit& b);
     friend Digit operator+(Digit& a, Digit& b);
