@@ -200,6 +200,30 @@ InfixExpression.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Calculator.dir\build.make CMakeFiles/Calculator.dir/InfixExpression.cpp.s
 .PHONY : InfixExpression.cpp.s
 
+PostfixExpression.obj: PostfixExpression.cpp.obj
+.PHONY : PostfixExpression.obj
+
+# target to build an object file
+PostfixExpression.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Calculator.dir\build.make CMakeFiles/Calculator.dir/PostfixExpression.cpp.obj
+.PHONY : PostfixExpression.cpp.obj
+
+PostfixExpression.i: PostfixExpression.cpp.i
+.PHONY : PostfixExpression.i
+
+# target to preprocess a source file
+PostfixExpression.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Calculator.dir\build.make CMakeFiles/Calculator.dir/PostfixExpression.cpp.i
+.PHONY : PostfixExpression.cpp.i
+
+PostfixExpression.s: PostfixExpression.cpp.s
+.PHONY : PostfixExpression.s
+
+# target to generate assembly for a file
+PostfixExpression.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Calculator.dir\build.make CMakeFiles/Calculator.dir/PostfixExpression.cpp.s
+.PHONY : PostfixExpression.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -242,6 +266,9 @@ help:
 	@echo ... InfixExpression.obj
 	@echo ... InfixExpression.i
 	@echo ... InfixExpression.s
+	@echo ... PostfixExpression.obj
+	@echo ... PostfixExpression.i
+	@echo ... PostfixExpression.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

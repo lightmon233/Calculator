@@ -5,8 +5,6 @@
 #ifndef CALCULATOR_DIGIT_H
 #define CALCULATOR_DIGIT_H
 
-#endif //CALCULATOR_DIGIT_H
-
 #include <string>
 
 using namespace std;
@@ -33,3 +31,5 @@ public:
     Digit& operator=(const Digit& b);
     void show(ostream& out);
 };
+
+#endif //CALCULATOR_DIGIT_H

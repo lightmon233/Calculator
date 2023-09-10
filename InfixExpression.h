@@ -5,8 +5,6 @@
 #ifndef CALCULATOR_INFIXEXPRESSION_H
 #define CALCULATOR_INFIXEXPRESSION_H
 
-#endif //CALCULATOR_INFIXEXPRESSION_H
-
 #include "BaseExpression.h"
 
 using namespace std;
@@ -17,3 +15,5 @@ public:
     void repair();
     Digit calc(ifstream &ifs, ofstream &ofs) override;
 };
+
+#endif //CALCULATOR_INFIXEXPRESSION_H

@@ -5,8 +5,6 @@
 #ifndef CALCULATOR_BASEEXPRESSION_H
 #define CALCULATOR_BASEEXPRESSION_H
 
-#endif //CALCULATOR_BASEEXPRESSION_H
-
 #include <iostream>
 #include "Digit.h"
 #include <stack>
@@ -30,3 +28,5 @@ public:
     void eval();
     virtual Digit calc(ifstream &ifs, ofstream &ofs) = 0;
 };
+
+#endif //CALCULATOR_BASEEXPRESSION_H

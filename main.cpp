@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "InfixExpression.h"
+#include "PostfixExpression.h"
 
 using namespace std;
 
@@ -18,8 +19,8 @@ int main() {
         exit(1);
     }
     string s;
-    while (ifs >> s) {
-        InfixExpression expression(s);
+    while (getline(ifs, s)) {
+        PostfixExpression expression(s);
         Digit ans = expression.calc(ifs, ofs);
         ans.show(ofs);
     }
