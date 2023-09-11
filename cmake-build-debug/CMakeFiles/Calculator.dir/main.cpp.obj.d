@@ -159,4 +159,5 @@ CMakeFiles/Calculator.dir/main.cpp.obj: E:\code\Calculator\main.cpp \
  D:/Program\ Files/JetBrains/CLion\ 2023.1.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/invoke.h \
  D:/Program\ Files/JetBrains/CLion\ 2023.1.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/node_handle.h \
  D:/Program\ Files/JetBrains/CLion\ 2023.1.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unordered_map.h \
- D:/Program\ Files/JetBrains/CLion\ 2023.1.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/erase_if.h
+ D:/Program\ Files/JetBrains/CLion\ 2023.1.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/erase_if.h \
+ E:\code\Calculator\PostfixExpression.h

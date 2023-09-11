@@ -21,7 +21,8 @@ protected:
             {'+', 1},
             {'-', 1},
             {'*', 2},
-            {'/', 2}
+            {'/', 2},
+            {'%', 2}
     };
 public:
     BaseExpression(string s);

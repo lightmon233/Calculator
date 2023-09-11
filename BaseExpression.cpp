@@ -29,8 +29,12 @@ void BaseExpression::eval() {
         auto r = b * a;
         num.push(r);
     }
-    else {
+    else if (p == '/'){
         auto r = b / a;
+        num.push(r);
+    }
+    else {
+        auto r = b % a;
         num.push(r);
     }
 }
