@@ -199,7 +199,7 @@ Digit operator/(Digit& a, Digit& b) {
         for (int i = res.digits; i >= 1; i --) {
             Digit tmp(b);
             tmp.leftShift(i - 1);
-            while (a.comparePostive(tmp) >= 0) {
+            while (aa.comparePostive(tmp) >= 0) {
                 res.p[i] ++;
                 aa = minusPostive(aa, tmp);
             }
@@ -207,6 +207,31 @@ Digit operator/(Digit& a, Digit& b) {
         while (res.p[res.digits] == 0 && res.digits > 1) res.digits --;
         if (a.p[0] ^ b.p[0]) res.p[0] = 1;
         return res;
+    }
+}
+
+Digit operator%(Digit &a, Digit &b) {
+    if (b.p[b.digits] == 0) {
+        puts("illegal arguments at the call of function 'operator/'!");
+        exit(1);
+    }
+    else if (a.digits - b.digits + 1 <= 0) {
+        return a;
+    }
+    else {
+        Digit res(a.digits - b.digits + 1);
+        Digit aa(a);
+        for (int i = res.digits; i >= 1; i --) {
+            Digit tmp(b);
+            tmp.leftShift(i - 1);
+            while (aa.comparePostive(tmp) >= 0) {
+                res.p[i] ++;
+                aa = minusPostive(aa, tmp);
+            }
+        }
+        while (aa.p[aa.digits] == 0 && aa.digits > 1) aa.digits --;
+        if (a.p[0] ^ b.p[0]) aa.p[0] = 1;
+        return aa;
     }
 }
 

@@ -20,7 +20,7 @@ int main() {
     }
     string s;
     while (getline(ifs, s)) {
-        PostfixExpression expression(s);
+        InfixExpression expression(s);
         Digit ans = expression.calc(ifs, ofs);
         ans.show(ofs);
     }
