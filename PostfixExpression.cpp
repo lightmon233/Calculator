@@ -17,7 +17,7 @@ void PostfixExpression::repair() {
                 tmp += s[j];
                 j ++;
             }
-            cout << tmp << endl;
+            // cout << tmp << endl;
             s.replace(i, j - i, "0 " + tmp + " -");
             i = j + 2;
         }

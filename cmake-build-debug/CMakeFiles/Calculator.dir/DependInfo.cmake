@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "E:/code/Calculator/Digit.cpp" "CMakeFiles/Calculator.dir/Digit.cpp.obj" "gcc" "CMakeFiles/Calculator.dir/Digit.cpp.obj.d"
   "E:/code/Calculator/InfixExpression.cpp" "CMakeFiles/Calculator.dir/InfixExpression.cpp.obj" "gcc" "CMakeFiles/Calculator.dir/InfixExpression.cpp.obj.d"
   "E:/code/Calculator/PostfixExpression.cpp" "CMakeFiles/Calculator.dir/PostfixExpression.cpp.obj" "gcc" "CMakeFiles/Calculator.dir/PostfixExpression.cpp.obj.d"
+  "E:/code/Calculator/PrefixExpression.cpp" "CMakeFiles/Calculator.dir/PrefixExpression.cpp.obj" "gcc" "CMakeFiles/Calculator.dir/PrefixExpression.cpp.obj.d"
   "E:/code/Calculator/main.cpp" "CMakeFiles/Calculator.dir/main.cpp.obj" "gcc" "CMakeFiles/Calculator.dir/main.cpp.obj.d"
   )
 

@@ -2,6 +2,7 @@
 #include <fstream>
 #include "InfixExpression.h"
 #include "PostfixExpression.h"
+#include "PrefixExpression.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ int main() {
     }
     string s;
     while (getline(ifs, s)) {
-        InfixExpression expression(s);
+        PrefixExpression expression(s);
         Digit ans = expression.calc(ifs, ofs);
         ans.show(ofs);
     }

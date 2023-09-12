@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Calculator.dir/InfixExpression.cpp.obj.d"
   "CMakeFiles/Calculator.dir/PostfixExpression.cpp.obj"
   "CMakeFiles/Calculator.dir/PostfixExpression.cpp.obj.d"
+  "CMakeFiles/Calculator.dir/PrefixExpression.cpp.obj"
+  "CMakeFiles/Calculator.dir/PrefixExpression.cpp.obj.d"
   "CMakeFiles/Calculator.dir/main.cpp.obj"
   "CMakeFiles/Calculator.dir/main.cpp.obj.d"
   "Calculator.exe"

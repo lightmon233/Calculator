@@ -26,7 +26,7 @@ protected:
     };
 public:
     BaseExpression(string s);
-    void eval();
+    virtual void eval();
     virtual Digit calc(ifstream &ifs, ofstream &ofs) = 0;
 };
 

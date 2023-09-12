@@ -106,6 +106,12 @@
 		<Unit filename="E:/code/Calculator/PostfixExpression.h">
 			<Option target="Calculator"/>
 		</Unit>
+		<Unit filename="E:/code/Calculator/PrefixExpression.cpp">
+			<Option target="Calculator"/>
+		</Unit>
+		<Unit filename="E:/code/Calculator/PrefixExpression.h">
+			<Option target="Calculator"/>
+		</Unit>
 		<Unit filename="E:/code/Calculator/main.cpp">
 			<Option target="Calculator"/>
 		</Unit>

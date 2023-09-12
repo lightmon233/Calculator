@@ -3,4 +3,4 @@ project(Calculator)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Calculator main.cpp Digit.h Digit.cpp BaseExpression.h BaseExpression.cpp InfixExpression.h InfixExpression.cpp PostfixExpression.h PostfixExpression.cpp)
+add_executable(Calculator main.cpp Digit.h Digit.cpp BaseExpression.h BaseExpression.cpp InfixExpression.h InfixExpression.cpp PostfixExpression.h PostfixExpression.cpp PrefixExpression.h PrefixExpression.cpp)
